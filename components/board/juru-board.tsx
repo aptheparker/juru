@@ -5,6 +5,7 @@ export default function JuruBoard({ numOfPlayers }: { numOfPlayers: number }) {
   const [currentPlayer, setCurrentPlayer] = useState(0);
   const [diceRoll, setDiceRoll] = useState(0);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [showDiceAnimation, setShowDiceAnimation] = useState(false);
 
   const playerColors = [
     "bg-black",
@@ -26,6 +27,7 @@ export default function JuruBoard({ numOfPlayers }: { numOfPlayers: number }) {
 
   const handleRollDice = () => {
     setIsButtonDisabled(true);
+    setShowDiceAnimation(true); // Start showing the animation
     const roll = Math.floor(Math.random() * 6) + 1;
     setDiceRoll(roll);
 
@@ -44,6 +46,7 @@ export default function JuruBoard({ numOfPlayers }: { numOfPlayers: number }) {
     setTimeout(() => {
       setCurrentPlayer((prevPlayer) => (prevPlayer + 1) % numOfPlayers);
       setIsButtonDisabled(false);
+      setShowDiceAnimation(false); // Stop showing the animation
     }, 1000);
   };
 
@@ -114,7 +117,7 @@ export default function JuruBoard({ numOfPlayers }: { numOfPlayers: number }) {
       </div>
 
       {/* Center */}
-      <div className="col-span-10 row-span-6 bg-white flex justify-center items-center">
+      <div className="col-span-10 row-span-6 bg-white flex flex-col justify-center items-center">
         <button
           onClick={handleRollDice}
           disabled={isButtonDisabled}
@@ -127,6 +130,14 @@ export default function JuruBoard({ numOfPlayers }: { numOfPlayers: number }) {
           <div>Player {currentPlayer + 1}</div>
           Roll Dice (Roll: {diceRoll})
         </button>
+        {showDiceAnimation && (
+          <div className="dice-animation">
+            {/* Add your dice animation element here. For example, a simple div or an image */}
+            <div className="w-10 h-10 bg-gray-400 rounded-full flex justify-center items-center">
+              Rolling...
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Right Column */}
