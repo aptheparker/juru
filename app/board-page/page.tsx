@@ -1,11 +1,13 @@
 "use client";
 
 import PlayerCard from "@/components/card/player-card";
-import { useState, useEffect } from "react";
+import JuruBoard from "@/components/board/juru-board";
+import { useState } from "react";
 
 export default function BoardPage() {
   const [isFirstRender, setIsFirstRender] = useState(true);
   const [numOfPlayers, setNumOfPlayers] = useState(0);
+  const [confirmedNumOfPlayers, setConfirmedNumOfPlayers] = useState(0);
 
   function addNumOfPlayers() {
     if (numOfPlayers >= 4) return;
@@ -19,6 +21,7 @@ export default function BoardPage() {
 
   function handleConfirm() {
     setIsFirstRender(false);
+    setConfirmedNumOfPlayers(numOfPlayers);
     console.log(numOfPlayers);
   }
 
@@ -32,9 +35,9 @@ export default function BoardPage() {
           confirmNumOfPlayers={handleConfirm}
         />
       )}
-      <h1>Board Page</h1>
-      <p>Number of players: {numOfPlayers}</p>
-      <div className="bg-green-600 w-5/6 h-5/6"/>
+      <h1 className="text-4xl font-bold">Board Page</h1>
+      <p className="text-xl">Number of players: {confirmedNumOfPlayers}</p>
+      <JuruBoard numOfPlayers={confirmedNumOfPlayers} />
     </div>
   );
 }
