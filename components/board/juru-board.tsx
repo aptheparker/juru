@@ -4,6 +4,8 @@ export default function JuruBoard(prop: { numOfPlayers: number }) {
   const [position, setPosition] = useState(0);
   const [diceRoll, setDiceRoll] = useState(0);
 
+  const players = new Array(prop.numOfPlayers).fill(0);
+
   const handleRollDice = () => {
     const roll = Math.floor(Math.random() * 6) + 1;
     setDiceRoll(roll);
@@ -26,7 +28,7 @@ export default function JuruBoard(prop: { numOfPlayers: number }) {
         {boardPositions.slice(0, 1).map((index) => (
           <div key={index} className="flex-1 flex justify-center items-center">
             Start
-            {renderPlayerMarker(index)}
+            {players.map((player) => renderPlayerMarker(index))}
           </div>
         ))}
       </div>
@@ -36,7 +38,7 @@ export default function JuruBoard(prop: { numOfPlayers: number }) {
             key={index}
             className="flex-1 border border-black flex justify-center items-center"
           >
-            {renderPlayerMarker(index)}
+            {players.map((player) => renderPlayerMarker(index))}
           </div>
         ))}
       </div>
@@ -44,7 +46,7 @@ export default function JuruBoard(prop: { numOfPlayers: number }) {
         {boardPositions.slice(11, 12).map((index) => (
           <div key={index} className="flex-1 flex justify-center items-center">
             Jail
-            {renderPlayerMarker(index)}
+            {players.map((player) => renderPlayerMarker(index))}
           </div>
         ))}
       </div>
@@ -59,7 +61,7 @@ export default function JuruBoard(prop: { numOfPlayers: number }) {
               key={index}
               className="flex-1 border border-black flex justify-center items-center"
             >
-              {renderPlayerMarker(index)}
+              {players.map((player) => renderPlayerMarker(index))}
             </div>
           ))}
       </div>
@@ -81,7 +83,7 @@ export default function JuruBoard(prop: { numOfPlayers: number }) {
             key={index}
             className="flex-1 border border-black flex justify-center items-center"
           >
-            {renderPlayerMarker(index)}
+            {players.map((player) => renderPlayerMarker(index))}
           </div>
         ))}
       </div>
@@ -91,7 +93,7 @@ export default function JuruBoard(prop: { numOfPlayers: number }) {
         {boardPositions.slice(29, 30).map((index) => (
           <div key={index} className="flex-1 flex justify-center items-center">
             Free Parking
-            {renderPlayerMarker(index)}
+            {players.map((player) => renderPlayerMarker(index))}
           </div>
         ))}
       </div>
@@ -104,7 +106,7 @@ export default function JuruBoard(prop: { numOfPlayers: number }) {
               key={index}
               className="flex-1 border border-black flex justify-center items-center"
             >
-              {renderPlayerMarker(index)}
+              {players.map((player) => renderPlayerMarker(index))}
             </div>
           ))}
       </div>
@@ -112,7 +114,7 @@ export default function JuruBoard(prop: { numOfPlayers: number }) {
         {boardPositions.slice(18, 19).map((index) => (
           <div key={index} className="flex-1 flex justify-center items-center">
             Go To Jail
-            {renderPlayerMarker(index)}
+            {players.map((player) => renderPlayerMarker(index))}
           </div>
         ))}
       </div>
