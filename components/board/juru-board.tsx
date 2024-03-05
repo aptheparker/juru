@@ -43,7 +43,7 @@ export default function JuruBoard({ numOfPlayers }: { numOfPlayers: number }) {
     setTimeout(() => {
       setCurrentPlayer((prevPlayer) => (prevPlayer + 1) % numOfPlayers);
       setIsButtonDisabled(false);
-    }, 2000);
+    }, 1000);
   };
 
   const renderPlayerMarker = (index: number) => {
