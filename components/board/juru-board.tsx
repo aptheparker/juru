@@ -3,13 +3,21 @@ import { useState } from "react";
 export default function JuruBoard(prop: { numOfPlayers: number }) {
   const [position, setPosition] = useState(0);
   const [diceRoll, setDiceRoll] = useState(0);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
-  const players = new Array(prop.numOfPlayers).fill(0);
+  const players = new Array(prop.numOfPlayers).fill({
+    position: 0,
+  });
 
   const handleRollDice = () => {
+    setIsButtonDisabled(true);
     const roll = Math.floor(Math.random() * 6) + 1;
     setDiceRoll(roll);
     setPosition((prevPosition) => (prevPosition + roll) % 36);
+
+    setTimeout(() => {
+      setIsButtonDisabled(false);
+    }, 2000);
   };
 
   const boardPositions = Array.from({ length: 36 }, (_, index) => index);
@@ -70,7 +78,10 @@ export default function JuruBoard(prop: { numOfPlayers: number }) {
       <div className="col-span-10 row-span-6 bg-white flex justify-center items-center">
         <button
           onClick={handleRollDice}
-          className="p-2 bg-blue-700 text-white rounded"
+          disabled={isButtonDisabled}
+          className={`p-2 text-white rounded ${
+            isButtonDisabled ? "cursor-not-allowed bg-gray-500" : "cursor-pointer bg-blue-700"
+          }`}
         >
           Roll Dice (Roll: {diceRoll})
         </button>

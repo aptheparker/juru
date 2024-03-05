@@ -1,6 +1,6 @@
 import Button from "../ui/button";
 
-export default function PlayerCard(prop: {
+export default function PlayersModal(prop: {
   numOfPlayers: number;
   addNumOfPlayers: () => void;
   removeNumOfPlayers: () => void;

@@ -1,6 +1,6 @@
 "use client";
 
-import PlayerCard from "@/components/card/player-card";
+import PlayersModal from "@/components/modal/players-modal";
 import JuruBoard from "@/components/board/juru-board";
 import { useState } from "react";
 
@@ -31,7 +31,7 @@ export default function BoardPage() {
       }`}
     >
       {isFirstRender && (
-        <PlayerCard
+        <PlayersModal
           numOfPlayers={numOfPlayers}
           addNumOfPlayers={addNumOfPlayers}
           removeNumOfPlayers={removeNumOfPlayers}
