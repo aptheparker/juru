@@ -65,15 +65,13 @@ export default function JuruBoard(prop: { numOfPlayers: number }) {
       </div>
 
       {/* Center */}
-      <div className="col-span-10 row-span-6 bg-white">
-        <div className="col-start-5 col-span-4 row-start-3 row-span-3 flex justify-center items-center">
-          <button
-            onClick={handleRollDice}
-            className="p-2 bg-blue-700 text-white rounded"
-          >
-            Roll Dice (Roll: {diceRoll})
-          </button>
-        </div>
+      <div className="col-span-10 row-span-6 bg-white flex justify-center items-center">
+        <button
+          onClick={handleRollDice}
+          className="p-2 bg-blue-700 text-white rounded"
+        >
+          Roll Dice (Roll: {diceRoll})
+        </button>
       </div>
 
       {/* Right Column */}
@@ -90,7 +88,7 @@ export default function JuruBoard(prop: { numOfPlayers: number }) {
 
       {/* Bottom Row */}
       <div className="col-span-1 row-span-1 bg-blue-500">
-        {boardPositions.slice(29,30).map((index) => (
+        {boardPositions.slice(29, 30).map((index) => (
           <div key={index} className="flex-1 flex justify-center items-center">
             Free Parking
             {renderPlayerMarker(index)}
@@ -111,7 +109,7 @@ export default function JuruBoard(prop: { numOfPlayers: number }) {
           ))}
       </div>
       <div className="col-span-1 row-span-1 bg-blue-500">
-        {boardPositions.slice(18,19).map((index) => (
+        {boardPositions.slice(18, 19).map((index) => (
           <div key={index} className="flex-1 flex justify-center items-center">
             Go To Jail
             {renderPlayerMarker(index)}
