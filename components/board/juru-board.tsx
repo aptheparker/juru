@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import boardData from "@/data/board.json";
 
 export default function JuruBoard({ numOfPlayers }: { numOfPlayers: number }) {
   const [currentPlayer, setCurrentPlayer] = useState(0);
@@ -57,15 +58,18 @@ export default function JuruBoard({ numOfPlayers }: { numOfPlayers: number }) {
       ));
   };
 
-  const boardPositions = Array.from({ length: 36 }, (_, index) => index);
+  const boardPositions = Array.from(boardData, (_, index) => index);
 
   return (
     <div className="bg-green-600 w-11/12 h-5/6 grid grid-cols-12 grid-rows-8 gap-1 p-1">
       {/* Top Row */}
-      <div className="col-span-1 row-span-1 bg-blue-500">
+      <div className="col-span-1 bg-blue-500 flex">
         {boardPositions.slice(0, 1).map((index) => (
-          <div key={index} className="flex flex-col justify-center items-center">
-            Start
+          <div
+            key={index}
+            className="flex-1 flex flex-col border border-black justify-between items-center"
+          >
+            {boardData[index].mission}
             <div className="flex">{renderPlayerMarker(index)}</div>
           </div>
         ))}
@@ -74,17 +78,21 @@ export default function JuruBoard({ numOfPlayers }: { numOfPlayers: number }) {
         {boardPositions.slice(1, 11).map((index) => (
           <div
             key={index}
-            className="flex-1 border border-black flex justify-center items-center"
+            className="flex-1 flex flex-col border border-black justify-between items-center"
           >
-            {renderPlayerMarker(index)}
+            {boardData[index].mission}
+            <div className="flex">{renderPlayerMarker(index)}</div>
           </div>
         ))}
       </div>
-      <div className="col-span-1 row-span-1 bg-blue-500">
+      <div className="col-span-1 bg-blue-500 flex">
         {boardPositions.slice(11, 12).map((index) => (
-          <div key={index} className="flex-1 flex justify-center items-center">
-            Jail
-            {renderPlayerMarker(index)}
+          <div
+            key={index}
+            className="flex-1 flex flex-col border border-black justify-between items-center"
+          >
+            {boardData[index].mission}
+            <div className="flex">{renderPlayerMarker(index)}</div>
           </div>
         ))}
       </div>
@@ -97,9 +105,10 @@ export default function JuruBoard({ numOfPlayers }: { numOfPlayers: number }) {
           .map((index) => (
             <div
               key={index}
-              className="flex-1 border border-black flex justify-center items-center"
+              className="flex-1 flex flex-col border border-black justify-between items-center"
             >
-              {renderPlayerMarker(index)}
+              {boardData[index].mission}
+              <div className="flex">{renderPlayerMarker(index)}</div>
             </div>
           ))}
       </div>
@@ -125,19 +134,23 @@ export default function JuruBoard({ numOfPlayers }: { numOfPlayers: number }) {
         {boardPositions.slice(12, 18).map((index) => (
           <div
             key={index}
-            className="flex-1 border border-black flex justify-center items-center"
+            className="flex-1 flex flex-col border border-black justify-between items-center"
           >
-            {renderPlayerMarker(index)}
+            {boardData[index].mission}
+            <div className="flex">{renderPlayerMarker(index)}</div>
           </div>
         ))}
       </div>
 
       {/* Bottom Row */}
-      <div className="col-span-1 row-span-1 bg-blue-500">
+      <div className="col-span-1 bg-blue-500 flex">
         {boardPositions.slice(29, 30).map((index) => (
-          <div key={index} className="flex-1 flex justify-center items-center">
-            Free Parking
-            {renderPlayerMarker(index)}
+          <div
+            key={index}
+            className="flex-1 flex flex-col border border-black justify-between items-center"
+          >
+            {boardData[index].mission}
+            <div className="flex">{renderPlayerMarker(index)}</div>
           </div>
         ))}
       </div>
@@ -148,17 +161,21 @@ export default function JuruBoard({ numOfPlayers }: { numOfPlayers: number }) {
           .map((index) => (
             <div
               key={index}
-              className="flex-1 border border-black flex justify-center items-center"
+              className="flex-1 flex flex-col border border-black justify-between items-center"
             >
-              {renderPlayerMarker(index)}
+              {boardData[index].mission}
+              <div className="flex">{renderPlayerMarker(index)}</div>
             </div>
           ))}
       </div>
-      <div className="col-span-1 row-span-1 bg-blue-500">
+      <div className="col-span-1 bg-blue-500 flex">
         {boardPositions.slice(18, 19).map((index) => (
-          <div key={index} className="flex-1 flex justify-center items-center">
-            Go To Jail
-            {renderPlayerMarker(index)}
+          <div
+            key={index}
+            className="flex-1 flex flex-col border border-black justify-between items-center"
+          >
+            {boardData[index].mission}
+            <div className="flex">{renderPlayerMarker(index)}</div>
           </div>
         ))}
       </div>
