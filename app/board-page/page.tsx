@@ -23,9 +23,7 @@ export default function BoardPage() {
   }
 
   return (
-    <div className="text-center">
-      <h1>Board Page</h1>
-      <p>Number of players: {numOfPlayers}</p>
+    <div className="text-center w-full h-full flex flex-col items-center justify-center">
       {isFirstRender && (
         <PlayerCard
           numOfPlayers={numOfPlayers}
@@ -34,6 +32,9 @@ export default function BoardPage() {
           confirmNumOfPlayers={handleConfirm}
         />
       )}
+      <h1>Board Page</h1>
+      <p>Number of players: {numOfPlayers}</p>
+      <div className="bg-green-600 w-5/6 h-5/6"/>
     </div>
   );
 }
