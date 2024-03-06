@@ -6,8 +6,8 @@ import { useState } from "react";
 
 export default function BoardPage() {
   const [isFirstRender, setIsFirstRender] = useState(true);
-  const [numOfPlayers, setNumOfPlayers] = useState(0);
-  const [confirmedNumOfPlayers, setConfirmedNumOfPlayers] = useState(0);
+  const [numOfPlayers, setNumOfPlayers] = useState(1);
+  const [confirmedNumOfPlayers, setConfirmedNumOfPlayers] = useState(1);
 
   function addNumOfPlayers() {
     if (numOfPlayers >= 4) return;
@@ -15,7 +15,7 @@ export default function BoardPage() {
   }
 
   function removeNumOfPlayers() {
-    if (numOfPlayers <= 0) return;
+    if (numOfPlayers <= 1) return;
     setNumOfPlayers(numOfPlayers - 1);
   }
 
