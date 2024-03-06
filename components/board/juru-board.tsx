@@ -31,19 +31,18 @@ export default function JuruBoard({ numOfPlayers }: { numOfPlayers: number }) {
     const roll = Math.floor(Math.random() * 6) + 1;
     setDiceRoll(roll);
 
-    setPlayers((prevPlayers) =>
-      prevPlayers.map((player) => {
-        if (player.id === currentPlayer) {
-          return {
-            ...player,
-            position: (player.position + roll) % 36,
-          };
-        }
-        return player;
-      })
-    );
-
     setTimeout(() => {
+      setPlayers((prevPlayers) =>
+        prevPlayers.map((player) => {
+          if (player.id === currentPlayer) {
+            return {
+              ...player,
+              position: (player.position + roll) % 36,
+            };
+          }
+          return player;
+        })
+      );
       setCurrentPlayer((prevPlayer) => (prevPlayer + 1) % numOfPlayers);
       setIsButtonDisabled(false);
       setShowDiceAnimation(false); // Stop showing the animation
@@ -118,25 +117,26 @@ export default function JuruBoard({ numOfPlayers }: { numOfPlayers: number }) {
 
       {/* Center */}
       <div className="col-span-10 row-span-6 bg-white flex flex-col justify-center items-center">
-        <button
-          onClick={handleRollDice}
-          disabled={isButtonDisabled}
-          className={`p-2 text-white rounded ${
-            isButtonDisabled
-              ? "cursor-not-allowed bg-gray-500"
-              : "cursor-pointer bg-blue-700"
-          }`}
-        >
-          <div>Player {currentPlayer + 1}</div>
-          Roll Dice (Roll: {diceRoll})
-        </button>
-        {showDiceAnimation && (
+        {showDiceAnimation ? (
           <div className="dice-animation">
             {/* Add your dice animation element here. For example, a simple div or an image */}
             <div className="w-10 h-10 bg-gray-400 rounded-full flex justify-center items-center">
               Rolling...
             </div>
           </div>
+        ) : (
+          <button
+            onClick={handleRollDice}
+            disabled={isButtonDisabled}
+            className={`p-2 text-white rounded ${
+              isButtonDisabled
+                ? "cursor-not-allowed bg-gray-500"
+                : "cursor-pointer bg-blue-700"
+            }`}
+          >
+            <div>Player {currentPlayer + 1}</div>
+            Roll Dice (Roll: {diceRoll})
+          </button>
         )}
       </div>
 
