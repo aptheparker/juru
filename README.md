@@ -17,10 +17,12 @@
 ## 3. Tech
 
 ### 3.1. Tech Stack
+
 - Next.js (Typescript)
 - Tailwind CSS
 
 ### 3.2. Project Structure
+
 ```
 juru/
 ├─ app/
@@ -48,7 +50,9 @@ juru/
 - Templates of boards (list of inputs) to be provided for the users. (Priority: High, Issue: #3)
 - User can create their own board. (Priority: Low, Issue: #2)
 
-## 5. Contributing
+## 5. Contribution
+
+### 5.1 :star: How to Contribute
 
 1. Fork it!
 2. Create your feature branch: `git checkout -b feature/my-new-feature`
@@ -56,9 +60,14 @@ juru/
 4. Push to the branch: `git push origin feature/my-new-feature`
 5. Submit a pull request merging into the `main` branch.
 
+### 5.2 :wave: Contributors
+
+<a href="https://github.com/aptheparker/juru/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=aptheparker/juru" />
+</a>
+
 ## More Information
 
 - If you have any feature requests or bug reports, please create an issue.
 - Feel free to contribute to this project.
 - Let's have fun with Juru!
-
