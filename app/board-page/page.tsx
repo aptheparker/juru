@@ -1,10 +1,11 @@
-"use client";
+'use client'
 
 import PlayersModal from "@/components/modal/players-modal";
 import JuruBoard from "@/components/board/juru-board";
 import { useState } from "react";
 
 export default function BoardPage() {
+
   const [isFirstRender, setIsFirstRender] = useState(true);
   const [numOfPlayers, setNumOfPlayers] = useState(1);
   const [confirmedNumOfPlayers, setConfirmedNumOfPlayers] = useState(1);
