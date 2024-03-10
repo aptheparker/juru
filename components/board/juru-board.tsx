@@ -17,7 +17,7 @@ export default function JuruBoard({ numOfPlayers }: { numOfPlayers: number }) {
     Array.from({ length: num }, (_, index) => ({
       id: index,
       position: 0,
-      color: playerColors[index], // Assign a color to each player
+      color: playerColors[index],
     }));
   const [players, setPlayers] = useState(() => initializePlayers(numOfPlayers));
 
@@ -27,7 +27,7 @@ export default function JuruBoard({ numOfPlayers }: { numOfPlayers: number }) {
 
   const handleRollDice = () => {
     setIsButtonDisabled(true);
-    setShowDiceAnimation(true); // Start showing the animation
+    setShowDiceAnimation(true);
     const roll = Math.floor(Math.random() * 6) + 1;
     setDiceRoll(roll);
 
@@ -119,24 +119,26 @@ export default function JuruBoard({ numOfPlayers }: { numOfPlayers: number }) {
       <div className="col-span-10 row-span-6 bg-white flex flex-col justify-center items-center">
         {showDiceAnimation ? (
           <div className="dice-animation">
-            {/* Add your dice animation element here. For example, a simple div or an image */}
             <div className="w-10 h-10 bg-gray-400 rounded-full flex justify-center items-center">
               Rolling...
             </div>
           </div>
         ) : (
-          <button
-            onClick={handleRollDice}
-            disabled={isButtonDisabled}
-            className={`p-2 text-white rounded ${
-              isButtonDisabled
-                ? "cursor-not-allowed bg-gray-500"
-                : "cursor-pointer bg-blue-700"
-            }`}
-          >
-            <div>Player {currentPlayer + 1}</div>
-            Roll Dice (Roll: {diceRoll})
-          </button>
+          <div>
+            <div className="text-3xl font-bold mb-4">Dice Roll: {diceRoll}</div>
+            <button
+              onClick={handleRollDice}
+              disabled={isButtonDisabled}
+              className={`p-2 text-white rounded ${
+                isButtonDisabled
+                  ? "cursor-not-allowed bg-gray-500"
+                  : "cursor-pointer bg-blue-700"
+              }`}
+            >
+              <div>Player {currentPlayer + 1}</div>
+              Roll Dice
+            </button>
+          </div>
         )}
       </div>
 
