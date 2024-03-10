@@ -7,13 +7,13 @@ export default function HomePage() {
   const navigation = useRouter();
 
   const handleClick = () => {
-    navigation.push("/board-page");
+    navigation.push("/template-page");
   };
 
   return (
     <div className="text-center">
       <h1 className="text-4xl font-bold mb-4">Juru</h1>
-      <Button onClick={handleClick}>Start</Button>
+      <Button onClick={handleClick}>Start with Template</Button>
     </div>
   );
 }
