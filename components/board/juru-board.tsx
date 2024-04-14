@@ -1,7 +1,13 @@
 import { useState, useEffect } from "react";
-import boardData from "@/data/board.json";
+import { useSearchParams } from "next/navigation";
 
 export default function JuruBoard({ numOfPlayers }: { numOfPlayers: number }) {
+  const searchParams = useSearchParams();
+
+  const data = searchParams.get("boardData");
+  const boardData = data ? JSON.parse(data) : [];
+  const boardPositions = Array.from(boardData, (_, index) => index);
+
   const [currentPlayer, setCurrentPlayer] = useState(0);
   const [diceRoll, setDiceRoll] = useState(0);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
@@ -59,8 +65,6 @@ export default function JuruBoard({ numOfPlayers }: { numOfPlayers: number }) {
         ></div>
       ));
   };
-
-  const boardPositions = Array.from(boardData, (_, index) => index);
 
   return (
     <div className="bg-green-600 w-11/12 h-5/6 grid grid-cols-12 grid-rows-8 gap-1 p-1">
